@@ -18,6 +18,7 @@ lean_lib «reverseffiwithmathlib» where
       "-L.lake/packages/mathlib/.lake/build/lib/", "-lMathlib",
       "-L.lake/packages/proofwidgets/.lake/build/lib/", "-lProofWidgets",
       "-L.lake/packages/Qq/.lake/build/lib/", "-lQq",
-      "-L.lake/packages/std/.lake/build/lib/", "-lStd"]
+      "-L.lake/packages/std/.lake/build/lib/", "-lStd",
+      "-lLake"]
 
 require mathlib from git "https://github.com/leanprover-community/mathlib4" @ "master"
