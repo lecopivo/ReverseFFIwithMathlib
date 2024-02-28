@@ -20,6 +20,6 @@ export LIBRARY_PATH=$LIBRARY_PATH:$(pwd)/.lake/packages/Qq/.lake/build/lib/
 export LIBRARY_PATH=$LIBRARY_PATH:$(pwd)/.lake/packages/std/.lake/build/lib/
 export LD_LIBRARY_PATH=$LIBRARY_PATH
 export CPLUS_INCLUDE_PATH=$HOME/.elan/toolchains/leanprover--lean4---v4.6.0-rc1/include/
-g++ test.cpp -o test -lreverseffiwithmathlib
+g++ test.cpp -o test -lleanshared -lreverseffiwithmathlib
 ./test
 ```
