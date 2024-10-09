@@ -8,10 +8,11 @@ To build this repository run these commands
 ```
 lake update
 lake build Aesop:shared Cli:shared ImportGraph:shared Mathlib:shared ProofWidgets:shared Qq:shared Batteries:shared LeanSearchClient:shared
-mkdir -p .lake/build && g++ -shared -o .lake/build/libLean.so -Wl,--whole-archive -fvisibility=default $HOME/.elan/toolchains/leanprover--lean4---v4.13.0-rc3/lib/lean/libLean.a -Wl,--no-whole-archive
+export LEAN_VERSION=`cat lean-toolchain` && export LEAN_VERSION=${LEAN_VERSION:17}
+mkdir -p .lake/build && g++ -shared -o .lake/build/libLean.so -Wl,--whole-archive -fvisibility=default $HOME/.elan/toolchains/leanprover--lean4---${LEAN_VERSION}/lib/lean/libLean.a -Wl,--no-whole-archive
 lake build
 export LIBRARY_PATH=$(pwd)/.lake/build/lib/
-export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.elan/toolchains/leanprover--lean4---v4.13.0-rc3/lib/lean/
+export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.elan/toolchains/leanprover--lean4---${LEAN_VERSION}/lib/lean/
 export LIBRARY_PATH=$LIBRARY_PATH:$(pwd)/.lake/packages/aesop/.lake/build/lib/
 export LIBRARY_PATH=$LIBRARY_PATH:$(pwd)/.lake/packages/Cli/.lake/build/lib/
 export LIBRARY_PATH=$LIBRARY_PATH:$(pwd)/.lake/packages/importGraph/.lake/build/lib/
@@ -21,7 +22,7 @@ export LIBRARY_PATH=$LIBRARY_PATH:$(pwd)/.lake/packages/Qq/.lake/build/lib/
 export LIBRARY_PATH=$LIBRARY_PATH:$(pwd)/.lake/packages/batteries/.lake/build/lib/
 export LIBRARY_PATH=$LIBRARY_PATH:$(pwd)/.lake/packages/LeanSearchClient/.lake/build/lib/
 export LD_LIBRARY_PATH=$LIBRARY_PATH
-export CPLUS_INCLUDE_PATH=$HOME/.elan/toolchains/leanprover--lean4---v4.13.0-rc3/include/
+export CPLUS_INCLUDE_PATH=$HOME/.elan/toolchains/leanprover--lean4---${LEAN_VERSION}/include/
 g++ test.cpp -o test -lleanshared -lreverseffiwithmathlib
 ./test
 ```
