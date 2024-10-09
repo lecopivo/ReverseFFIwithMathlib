@@ -38,7 +38,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: build
-        run:
+        run: |
           lake update
           lake build Aesop:shared Cli:shared ImportGraph:shared Mathlib:shared ProofWidgets:shared Qq:shared Batteries:shared LeanSearchClient:shared
           export LEAN_VERSION=`cat lean-toolchain` && export LEAN_VERSION=${LEAN_VERSION:17}
